@@ -1,0 +1,254 @@
+{
+  "actions": [
+    {
+      "icon": "🧘",
+      "name": "Idle",
+      "slug": "idle"
+    },
+    {
+      "icon": "🏃",
+      "name": "Run",
+      "slug": "run"
+    },
+    {
+      "icon": "🚶",
+      "name": "Walk",
+      "slug": "walk"
+    },
+    {
+      "icon": "🤾",
+      "name": "Jump",
+      "slug": "jump"
+    },
+    {
+      "icon": "↪️",
+      "name": "Rotate Horizontal",
+      "slug": "rotate_horizontal"
+    },
+    {
+      "icon": "↪️",
+      "name": "Rotate Vertical",
+      "slug": "rotate_vertical"
+    },
+    {
+      "icon": "🚶",
+      "name": "Walk",
+      "slug": "Walk"
+    },
+    {
+      "icon": "🤾⏩🧘",
+      "name": "Jump to Idle",
+      "slug": "Jump_ToIdle"
+    },
+    {
+      "icon": "🧘💥2️⃣",
+      "name": "Idle Hit React 2",
+      "slug": "Idle_HitReact2"
+    },
+    {
+      "icon": "🧘💥1️⃣",
+      "name": "Idle Hit React 1",
+      "slug": "Idle_HitReact1"
+    },
+    {
+      "icon": "🧘2️⃣👇",
+      "name": "Idle 2 Head Low",
+      "slug": "Idle_2_HeadLow"
+    },
+    {
+      "icon": "🧘2️⃣",
+      "name": "Idle 2",
+      "slug": "Idle_2"
+    },
+    {
+      "icon": "🐎",
+      "name": "Gallop",
+      "slug": "Gallop"
+    },
+    {
+      "icon": "🧘",
+      "name": "Idle",
+      "slug": "Idle"
+    },
+    {
+      "icon": "🍴",
+      "name": "Eating",
+      "slug": "Eating"
+    },
+    {
+      "icon": "💀",
+      "name": "Death",
+      "slug": "Death"
+    },
+    {
+      "icon": "⚔️",
+      "name": "Attack",
+      "slug": "Attack"
+    },
+    {
+      "icon": "🐎🤾",
+      "name": "Gallop Jump",
+      "slug": "Gallop_Jump"
+    }
+  ],
+  "categories": [
+    {
+      "color": "bg-emerald-500",
+      "icon": "🌎",
+      "name": "All",
+      "slug": "all"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🔥",
+      "name": "Suggested",
+      "slug": "suggested"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🐶",
+      "name": "Animal",
+      "slug": "animal"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🪑",
+      "name": "Furniture",
+      "slug": "furniture"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🌳",
+      "name": "Nature",
+      "slug": "nature"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🍔",
+      "name": "Food",
+      "slug": "food"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🔫",
+      "name": "Weapon",
+      "slug": "weapon"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🟨",
+      "name": "Low Poly",
+      "slug": "lowPoly"
+    },
+    {
+      "color": "bg-emerald-500",
+      "icon": "🟦",
+      "name": "Real",
+      "slug": "real"
+    }
+  ],
+  "creators": [
+    {
+      "description": "Ryan King Art is a 3D artist who creates 3D models and renders. He is also a YouTuber who shares his knowledge of 3D modeling and rendering.",
+      "name": "Ryan King Art",
+      "roles": [
+        "creator"
+      ],
+      "slug": "RyanKingArt",
+      "twitter": "https://twitter.com/RyanKingArt",
+      "website": "https://www.ryankingart.com/",
+      "youtube": "https://www.youtube.com/channel/UCfjswDVU0XHyBN7UFG0Mi5Q"
+    },
+    {
+      "description": "Developer of Meshmell",
+      "name": "Yuri Nakanishi",
+      "roles": [
+        "creator",
+        "developer"
+      ],
+      "slug": "YuriNakanishi",
+      "twitter": "https://twitter.com/yurimell6174",
+      "website": "https://yurimell.com/"
+    },
+    {
+      "artStation": "https://www.artstation.com/rico_b3d",
+      "description": "Technical Director at Polyhaven.com",
+      "name": "Rico Cilliers",
+      "roles": [
+        "creator"
+      ],
+      "slug": "RicoCilliers"
+    },
+    {
+      "description": "FREELANCE 3D-ARTIST",
+      "name": "Oliver Harries",
+      "roles": [
+        "creator"
+      ],
+      "slug": "OliverHarries",
+      "website": "https://oliverharries.myportfolio.com/"
+    },
+    {
+      "description": "3D-ARTIST",
+      "name": "Quaternius",
+      "roles": [
+        "creator"
+      ],
+      "slug": "Quaternius",
+      "website": "https://oliverharries.myportfolio.com/"
+    },
+    {
+      "artStation": "https://www.artstation.com/jamesray",
+      "description": "3D Artist for Games and Film.",
+      "name": "James Ray Cock",
+      "roles": [
+        "creator"
+      ],
+      "slug": "JamesRayCock"
+    },
+    {
+      "artStation": "https://www.artstation.com/serhiikhromov",
+      "description": "Material/Environment Artist",
+      "name": "Serhii Khromov",
+      "roles": [
+        "creator"
+      ],
+      "slug": "SerhiiKhromov"
+    },
+    {
+      "artStation": "https://www.artstation.com/rc12",
+      "description": "3D Environment and Prop artist",
+      "name": "Rahul Chaudhary",
+      "roles": [
+        "creator"
+      ],
+      "slug": "RahulChaudhary"
+    },
+    {
+      "artStation": "https://www.artstation.com/KuuttiSiitonen",
+      "description": "3D Artist",
+      "name": "Kuutti Siitonen",
+      "paypal": "https://www.paypal.com/paypalme/kuuttis",
+      "roles": [
+        "creator"
+      ],
+      "slug": "KuuttiSiitonen"
+    },
+    {
+      "description": "",
+      "name": "John Malcolm",
+      "roles": [
+        "creator"
+      ],
+      "slug": "JohnMalcolm"
+    },
+    {
+      "description": "",
+      "name": "Ulan Cabanilla",
+      "roles": [
+        "creator"
+      ],
+      "slug": "UlanCabanilla"
+    }
+  ]
+}

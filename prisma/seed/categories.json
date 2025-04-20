@@ -1,0 +1,56 @@
+[
+  {
+    "color": "bg-emerald-500",
+    "icon": "🌎",
+    "name": "All",
+    "slug": "all"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🔥",
+    "name": "Suggested",
+    "slug": "suggested"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🐶",
+    "name": "Animal",
+    "slug": "animal"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🪑",
+    "name": "Furniture",
+    "slug": "furniture"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🌳",
+    "name": "Nature",
+    "slug": "nature"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🍔",
+    "name": "Food",
+    "slug": "food"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🔫",
+    "name": "Weapon",
+    "slug": "weapon"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🟨",
+    "name": "Low Poly",
+    "slug": "lowPoly"
+  },
+  {
+    "color": "bg-emerald-500",
+    "icon": "🟦",
+    "name": "Real",
+    "slug": "real"
+  }
+]

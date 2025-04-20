@@ -1,225 +1,208 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
+import models from './seed/models.json'
+import actions from './seed/actions.json'
+import categories from './seed/categories.json'
+import users from './seed/users.json'
 
-import { ActionDetails } from "@/src/types/actions";
-
-import seedData from "./seedData";
-import seedDevData from "./seedDevData";
-
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function main() {
-  const actionMap = new Map<string, ActionDetails>();
-  const categoryMap = new Map<string, any>();
-  const userMap = new Map<string, any>();
-  const formatMap = new Map<string, any>();
-  const resolutionMap = new Map<string, any>();
-
-  // Insert Main Roles
-  const mainRoles = ["admin", "user"];
-  for (const role of mainRoles) {
-    await prisma.mainRole.create({
-      data: {
-        name: role,
-        slug: role,
-      },
-    });
-  }
-
-  // Insert Sub Roles
-  const subRoles = ["creator", "sponsor", "developer"];
-  for (const role of subRoles) {
-    await prisma.subRole.create({
-      data: {
-        name: role,
-        slug: role,
-      },
-    });
-  }
-
-  // Insert Actions
-  for (const actionData of seedData.actions) {
-    const action = await prisma.action.create({
-      data: {
-        name: actionData.name,
-        slug: actionData.slug,
-        icon: actionData.icon,
-      },
-    });
-    actionMap.set(actionData.slug, action);
-  }
-
-  if (process.env.NEXT_PUBLIC_ENV_STATUS !== "production") {
-    // Insert Sponsors
-    for (const sponsorData of seedDevData.sponsors) {
-      await prisma.user.create({
-        data: {
-          slug: sponsorData.slug,
-          name: sponsorData.name,
-          description: sponsorData.description,
-          mainRole: { connect: { slug: "user" } },
-          subRoles: { connect: { slug: "sponsor" } },
-          password: "sponsor",
-        },
-      });
+  // Create main roles
+  const adminRole = await prisma.mainRole.upsert({
+    where: { slug: 'admin' },
+    update: {},
+    create: {
+      slug: 'admin',
+      name: 'Admin'
     }
-  }
+  })
 
-  // Insert Creators
-  for (const creatorData of seedData.creators) {
-    const user = await prisma.user.create({
-      data: {
-        slug: creatorData.slug,
-        name: creatorData.name,
-        description: creatorData.description,
-        mainRole: { connect: { slug: "user" } },
-        subRoles: { connect: { slug: "creator" } },
-        password: "creator",
-      },
-    });
-    userMap.set(creatorData.slug, user);
-  }
-
-  // Insert Users
-  for (const userData of seedData.users) {
-    await prisma.user.create({
-      data: {
-        slug: userData.slug,
-        name: userData.name,
-        mainRole: { connect: { slug: "user" } },
-        subRoles: { connect: { slug: "normal" } },
-        password: "user",
-      },
-    });
-  }
-
-  // Insert Admin
-  await prisma.user.create({
-    data: {
-      email: "mesh@ mesh.com",
-      slug: "mesh",
-      password: "mesh",
-      name: "Mesh Admin",
-      mainRole: { connect: { slug: "admin" } },
-    },
-  });
-
-  // Insert Categories
-  for (const categoryData of seedData.categories) {
-    const category = await prisma.category.create({
-      data: {
-        name: categoryData.name,
-        slug: categoryData.slug,
-        icon: categoryData.icon,
-        color: categoryData.color,
-      },
-    });
-    categoryMap.set(categoryData.slug, category);
-  }
-
-  // Collect Formats and Resolutions
-  const formatSet = new Set<string>();
-  const resolutionSet = new Set<string>();
-
-  for (const modelData of seedData.models) {
-    if (modelData.formats) {
-      for (const format of modelData.formats) {
-        formatSet.add(format.name);
-      }
+  const userRole = await prisma.mainRole.upsert({
+    where: { slug: 'user' },
+    update: {},
+    create: {
+      slug: 'user',
+      name: 'User'
     }
+  })
 
-    if (modelData.resolutions) {
-      for (const resolution of modelData.resolutions) {
-        resolutionSet.add(resolution);
-      }
+  // Create sub roles
+  const creatorRole = await prisma.subRole.upsert({
+    where: { slug: 'creator' },
+    update: {},
+    create: {
+      slug: 'creator',
+      name: 'Creator'
     }
-  }
+  })
 
-  // Insert Formats
-  for (const formatName of formatSet) {
-    const format = await prisma.format.create({
-      data: {
-        name: formatName,
-      },
-    });
-    formatMap.set(formatName, format);
-  }
-
-  // Insert Resolutions
-  for (const resolutionName of resolutionSet) {
-    const resolution = await prisma.resolution.create({
-      data: {
-        name: resolutionName,
-      },
-    });
-    resolutionMap.set(resolutionName, resolution);
-  }
-
-  // Insert ThreeDModels
-  for (const modelData of seedData.models) {
-    const user = userMap.get(modelData.creator);
-
-    if (!user) {
-      console.error(`User ${modelData.creator} not found`);
-      continue;
+  const developerRole = await prisma.subRole.upsert({
+    where: { slug: 'developer' },
+    update: {},
+    create: {
+      slug: 'developer',
+      name: 'Developer'
     }
+  })
 
-    const categories = modelData.categoryTags
-      .map((slug: string) => categoryMap.get(slug))
-      .filter(Boolean);
+  const sponsorRole = await prisma.subRole.upsert({
+    where: { slug: 'sponsor' },
+    update: {},
+    create: {
+      slug: 'sponsor',
+      name: 'Sponsor'
+    }
+  })
 
-    const actions = (modelData.actions ?? [])
-      .map((slug: string) => actionMap.get(slug))
-      .filter(Boolean);
+  // Create users from users.json
+  const createdUsers = await Promise.all(
+    users.map(async (user) => {
+      // Get main role based on mainRoles field
+      const mainRole = user.mainRoles === 'admin' ? adminRole : userRole
 
-    const formats = (modelData.formats || [])
-      .map((format: any) => formatMap.get(format.slug))
-      .filter(Boolean);
+      // Get sub roles based on subRoles array
+      const subRoles = await Promise.all(
+        user.subRoles.map(async (role) => {
+          const subRole = await prisma.subRole.findUnique({
+            where: { slug: role }
+          })
+          return { id: subRole?.id }
+        })
+      )
 
-    const resolutions = (modelData.resolutions || [])
-      .map((name: string) => resolutionMap.get(name))
-      .filter(Boolean);
+      return prisma.user.upsert({
+        where: { slug: user.slug },
+        update: {},
+        create: {
+          name: user.name,
+          slug: user.slug,
+          description: user.description || null,
+          twitterUrl: user.twitter || null,
+          websiteUrl: user.website || null,
+          youtubeUrl: user.youtube || null,
+          mainRoleId: mainRole.id,
+          subRoles: {
+            connect: subRoles.filter(role => role.id)
+          }
+        }
+      })
+    })
+  )
 
-    await prisma.threeDModel.create({
-      data: {
-        name: modelData.name,
-        slug: modelData.slug,
-        description: modelData.description,
-        scale: modelData.scale,
-        rotationDegreesX: modelData.rotationDegrees.x,
-        rotationDegreesY: modelData.rotationDegrees.y,
-        rotationDegreesZ: modelData.rotationDegrees.z,
-        price: modelData.price,
-        license: modelData.license,
-        credit: modelData.credit,
-        isDownloadable: modelData.isDownloadable,
-        publishedAt: new Date(modelData.published),
-        user: { connect: { id: user.id } },
+  // Create categories from categories.json
+  const createdCategories = await Promise.all(
+    categories.map(async (category) => {
+      return prisma.category.upsert({
+        where: { slug: category.slug },
+        update: {},
+        create: {
+          name: category.name,
+          slug: category.slug,
+          icon: category.icon,
+          color: category.color
+        }
+      })
+    })
+  )
+
+  // Create actions from actions.json
+  const createdActions = await Promise.all(
+    actions.map(async (action) => {
+      return prisma.action.upsert({
+        where: { slug: action.slug },
+        update: {},
+        create: {
+          name: action.name,
+          slug: action.slug,
+          icon: action.icon
+        }
+      })
+    })
+  )
+
+  // Create formats
+  const formatSlugs = Array.from(
+    new Set(models.flatMap(model => model.formats))
+  )
+
+  const formats = await Promise.all(
+    formatSlugs.map(async (name) => {
+      const format = await prisma.format.create({
+        data: { name }
+      })
+      return format
+    })
+  )
+
+  // Create resolutions
+  const resolutionSlugs = Array.from(
+    new Set(models.flatMap(model => model.resolutions || []))
+  )
+
+  const resolutions = await Promise.all(
+    resolutionSlugs.map(async (name) => {
+      const resolution = await prisma.resolution.create({
+        data: { name }
+      })
+      return resolution
+    })
+  )
+
+  // Create 3D models
+  for (const model of models) {
+    const user = createdUsers.find(u => u.slug === model.creator)
+    if (!user) continue
+
+    const threeDModel = await prisma.threeDModel.upsert({
+      where: { slug: model.slug },
+      update: {},
+      create: {
+        name: model.name,
+        slug: model.slug,
+        description: model.description || '',
+        price: model.price,
+        license: model.license,
+        credit: model.credit || null,
+        isDownloadable: model.isDownloadable,
+        publishedAt: new Date(model.published),
+        scale: model.scale,
+        rotationDegreesX: model.rotationDegrees.x,
+        rotationDegreesY: model.rotationDegrees.y,
+        rotationDegreesZ: model.rotationDegrees.z,
+        userId: user.id,
         categories: {
-          connect: categories.map((category: any) => ({ id: category.id })),
-        },
-        actions: {
-          connect: actions.map((action: any) => ({ id: action.id })),
+          connect: model.categoryTags.map(tag => ({
+            slug: tag
+          }))
         },
         formats: {
-          connect: formats.map((format: any) => ({ id: format.id })),
+          create: model.formats.map(format => ({
+            format: {
+              connect: { id: formats.find(f => f.name === format)?.id }
+            },
+            isUsed: format === model.usedFormat
+          }))
         },
         resolutions: {
-          connect: resolutions.map((resolution: any) => ({
-            id: resolution.id,
-          })),
+          connect: (model.resolutions || []).map(resolution => ({
+            id: resolutions.find(r => r.name === resolution)?.id
+          })).filter(Boolean)
         },
-      },
-    });
+        actions: {
+          connect: (model.actions || []).map(action => ({
+            slug: action
+          }))
+        }
+      }
+    })
   }
-
-  console.log("Database has been seeded successfully.");
 }
 
 main()
   .catch((e) => {
-    console.error("Error seeding database:", e);
-    process.exit(1);
+    console.error(e)
+    process.exit(1)
   })
   .finally(async () => {
-    await prisma.$disconnect();
-  });
+    await prisma.$disconnect()
+  })

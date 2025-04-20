@@ -10,19 +10,13 @@
     ],
     "creator": "YuriNakanishi",
     "credit": "",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Animated Cube",
-      "ja": "アニメーション付きの立方体"
-    },
+    "name": "Animated Cube",
     "price": 0,
     "published": "2024-01-02",
     "resolutions": [
@@ -45,19 +39,13 @@
     ],
     "creator": "YuriNakanishi",
     "credit": "",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": false,
     "license": "CC0",
-    "name": {
-      "en": "Sci-Fi Worker Robot",
-      "ja": "SF雑用ロボット"
-    },
+    "name": "Sci-Fi Worker Robot",
     "price": 0,
     "published": "2024-01-02",
     "resolutions": [
@@ -87,19 +75,13 @@
     ],
     "creator": "RicoCilliers",
     "credit": "https://polyhaven.com/a/potted_plant_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Potted plant 01",
-      "ja": "植木鉢 01"
-    },
+    "name": "Potted plant 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -122,19 +104,13 @@
     ],
     "creator": "JamesRayCock",
     "credit": "https://polyhaven.com/a/wooden_crate_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wooden Crate 01",
-      "ja": "木箱"
-    },
+    "name": "Wooden Crate 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -158,19 +134,13 @@
     ],
     "creator": "SerhiiKhromov",
     "credit": "https://polyhaven.com/a/wooden_table_02",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wooden Table 02",
-      "ja": "木製のテーブル"
-    },
+    "name": "Wooden Table 02",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -195,19 +165,13 @@
     ],
     "creator": "OliverHarries",
     "credit": "https://polyhaven.com/a/food_apple_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Food Apple 01",
-      "ja": "リンゴ"
-    },
+    "name": "Food Apple 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -245,19 +209,13 @@
     ],
     "creator": "Quaternius",
     "credit": "https://quaternius.com/packs/ultimateanimatedanimals.html",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Fox",
-      "ja": "キツネ"
-    },
+    "name": "Fox",
     "price": 0,
     "published": "2021-10-31",
     "rotationDegrees": {
@@ -278,19 +236,13 @@
     ],
     "creator": "KuuttiSiitonen",
     "credit": "https://polyhaven.com/a/wicker_basket_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wicker Basket 01",
-      "ja": "籠 01"
-    },
+    "name": "Wicker Basket 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -314,19 +266,13 @@
     ],
     "creator": "UlanCabanilla",
     "credit": "https://polyhaven.com/a/wooden_handle_saber",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wooden Handle Saber",
-      "ja": "木製の柄の剣"
-    },
+    "name": "Wooden Handle Saber",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -349,19 +295,13 @@
     ],
     "creator": "JamesRayCock",
     "credit": "https://polyhaven.com/a/wine_barrel_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wine Barrel 01",
-      "ja": "ワイン樽"
-    },
+    "name": "Wine Barrel 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -400,19 +340,13 @@
     ],
     "creator": "Quaternius",
     "credit": "https://quaternius.com/packs/ultimateanimatedanimals.html",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Wolf",
-      "ja": "オオカミ"
-    },
+    "name": "Wolf",
     "price": 0,
     "published": "2021-10-31",
     "rotationDegrees": {
@@ -433,19 +367,13 @@
     ],
     "creator": "JohnMalcolm",
     "credit": "https://polyhaven.com/a/book_encyclopedia_set_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Book Encyclopedia Set 01",
-      "ja": "百科事典の本のセット 01"
-    },
+    "name": "Book Encyclopedia Set 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -469,19 +397,13 @@
     ],
     "creator": "UlanCabanilla",
     "credit": "https://polyhaven.com/a/round_wooden_table_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Round Wooden Table 01",
-      "ja": "丸い木製のテーブル 01"
-    },
+    "name": "Round Wooden Table 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -505,19 +427,13 @@
     ],
     "creator": "RahulChaudhary",
     "credit": "https://polyhaven.com/a/cardboard_box_01",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Cardboard Box 01",
-      "ja": "ダンボール箱 01"
-    },
+    "name": "Cardboard Box 01",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [
@@ -541,19 +457,13 @@
     ],
     "creator": "JamesRayCock",
     "credit": "https://polyhaven.com/a/dining_chair_02",
-    "description": {
-      "en": "",
-      "ja": ""
-    },
+    "description": "",
     "formats": [
       "glb"
     ],
     "isDownloadable": true,
     "license": "CC0",
-    "name": {
-      "en": "Dining Chair 02",
-      "ja": "ダイニングチェア"
-    },
+    "name": "Dining Chair 02",
     "price": 0,
     "published": "2021-10-31",
     "resolutions": [

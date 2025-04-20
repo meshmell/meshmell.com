@@ -1,5 +1,6 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import nextAuth from "next-auth";
+import { NextRequest } from 'next/server'
 
 import prisma from "@/src/lib/prisma";
 
@@ -15,3 +16,5 @@ export const {
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
 });
+
+export type NextAuthRequest = NextRequest

@@ -139,25 +139,33 @@ CREATE TABLE "accounts" (
 -- CreateTable
 CREATE TABLE "_ModelResolution" (
     "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+    "B" INTEGER NOT NULL,
+
+    CONSTRAINT "_ModelResolution_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateTable
 CREATE TABLE "_ModelAction" (
     "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+    "B" INTEGER NOT NULL,
+
+    CONSTRAINT "_ModelAction_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateTable
 CREATE TABLE "_ModelCategory" (
     "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+    "B" INTEGER NOT NULL,
+
+    CONSTRAINT "_ModelCategory_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateTable
 CREATE TABLE "_SubRoleToUser" (
     "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+    "B" INTEGER NOT NULL,
+
+    CONSTRAINT "_SubRoleToUser_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateIndex
@@ -185,25 +193,13 @@ CREATE UNIQUE INDEX "users_slug_key" ON "users"("slug");
 CREATE UNIQUE INDEX "accounts_provider_provider_account_id_key" ON "accounts"("provider", "provider_account_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_ModelResolution_AB_unique" ON "_ModelResolution"("A", "B");
-
--- CreateIndex
 CREATE INDEX "_ModelResolution_B_index" ON "_ModelResolution"("B");
-
--- CreateIndex
-CREATE UNIQUE INDEX "_ModelAction_AB_unique" ON "_ModelAction"("A", "B");
 
 -- CreateIndex
 CREATE INDEX "_ModelAction_B_index" ON "_ModelAction"("B");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_ModelCategory_AB_unique" ON "_ModelCategory"("A", "B");
-
--- CreateIndex
 CREATE INDEX "_ModelCategory_B_index" ON "_ModelCategory"("B");
-
--- CreateIndex
-CREATE UNIQUE INDEX "_SubRoleToUser_AB_unique" ON "_SubRoleToUser"("A", "B");
 
 -- CreateIndex
 CREATE INDEX "_SubRoleToUser_B_index" ON "_SubRoleToUser"("B");
