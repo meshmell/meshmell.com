@@ -1,0 +1,44 @@
+# node modules
+node_modules/
+
+# next.js
+.next/
+
+# env sample file
+.env.sample
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# gcs emulator
+gcs_dev/
+
+# other files
+LICENSE
+README.md
+SECURITY.md
+
+# docker compose files for emulators
+docker-compose.dev.emulators.yaml
+
+# cloudbuild files for google cloud build
+cloudbuild.yaml
+
+# version control
+.git/
+.gitignore
+
+# editor directories
+.vscode
+
+# log files
+*.log
+
+# linting configurations
+.eslintignore
+.eslintrc
+
+# prettier configurations
+.prettierignore
+.prettierrc

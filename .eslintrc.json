@@ -1,0 +1,81 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": [
+    "import",
+    "unused-imports",
+    "sort-keys-fix",
+    "typescript-sort-keys"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/no-duplicates": "error",
+    "unused-imports/no-unused-imports": "error",
+    "@next/next/no-img-element": "off",
+    "no-trailing-spaces": "error",
+    "eol-last": ["error", "always"], // or "never"
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-var-requires": "off",
+    "import/newline-after-import": [
+      "error",
+      { "count": 1, "exactCount": true, "considerComments": true }
+    ],
+    "@typescript-eslint/quotes": ["error", "double"],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "function"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "if"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "block"
+      },
+      {
+        "blankLine": "always",
+        "prev": "const",
+        "next": "export"
+      }
+    ]
+  }
+}

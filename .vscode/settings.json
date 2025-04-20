@@ -1,0 +1,19 @@
+{
+  "cSpell.words": [
+    "autoincrement",
+    "drei",
+    "GLTF",
+    "Lngs",
+    "nextjs",
+    "signup",
+    "threed",
+    "webp",
+    "Wireframe"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.autoSave": "onFocusChange"
+}

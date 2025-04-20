@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+        - NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL=${NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}
+        - NEXT_PUBLIC_ENV_STATUS=${NEXT_PUBLIC_ENV_STATUS}
+        - NEXT_PUBLIC_USE_GCS_EMULATOR=${NEXT_PUBLIC_USE_GCS_EMULATOR}
+        - NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY=${NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}
+        - NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE=${NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE}
+        - DATABASE_URL=${DATABASE_URL}
+        - DIRECT_URL=${DIRECT_URL}
+        - GCS_BUCKET_NAME=${GCS_BUCKET_NAME}
+        - GCS_TYPE=${GCS_TYPE}
+        - GCS_CLIENT_ID=${GCS_CLIENT_ID}
+        - GCS_PROJECT_ID=${GCS_PROJECT_ID}
+        - GCS_CLIENT_EMAIL=${GCS_CLIENT_EMAIL}
+        - GCS_PRIVATE_KEY=${GCS_PRIVATE_KEY}
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - gcs-emulator
+  db:
+    image: postgres:latest
+    container_name: db_meshmell
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-store-meshmell:/var/lib/postgresql/data
+  gcs-emulator:
+    image: "fsouza/fake-gcs-server:latest"
+    ports:
+      - "4443:4443"
+    volumes:
+      - ./gcs_dev:/data
+    command:
+      - "-scheme"
+      - "http"
+volumes:
+  db-store-meshmell:

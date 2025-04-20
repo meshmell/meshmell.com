@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Release pushed tag
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        uses: release-drafter/release-drafter@v5
+        with:
+          tag: ${{ env.RELEASE_TAG }}
+          name: Release ${{ env.RELEASE_TAG }}
+          version: ${{ env.RELEASE_TAG }}
+          publish: true

@@ -1,0 +1,199 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["strictUndefinedChecks"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model ThreeDModel {
+  id               Int      @id @default(autoincrement())
+  scale            Float
+  rotationDegreesX Int      @map("rotation_degrees_x")
+  rotationDegreesY Int      @map("rotation_degrees_y")
+  rotationDegreesZ Int      @map("rotation_degrees_z")
+  name             String
+  slug             String   @unique
+  description      String   @db.Text
+  userId           Int      @map("user_id")
+  price            Float
+  license          String
+  credit           String?
+  isDownloadable   Boolean  @map("is_downloadable")
+  publishedAt      DateTime @map("published_at")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @default(now()) @map("updated_at")
+
+  actions     Action[]            @relation("ModelAction")
+  downloads   Download[]          @relation("ModelDownload")
+  categories  Category[]          @relation("ModelCategory")
+  resolutions Resolution[]        @relation("ModelResolution")
+  formats     ThreeDModelFormat[]
+  galleries   GalleryModel[]
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("threed_models")
+}
+
+model ThreeDModelFormat {
+  threeDModel   ThreeDModel @relation(fields: [threeDModelId], references: [id], onDelete: Cascade)
+  threeDModelId Int         @map("threed_model_id")
+  format        Format      @relation(fields: [formatId], references: [id], onDelete: Cascade)
+  formatId      Int         @map("format_id")
+  isUsed        Boolean     @default(false)
+
+  @@id([threeDModelId, formatId])
+  @@map("threed_model_formats")
+}
+
+model Resolution {
+  id           Int           @id @default(autoincrement())
+  name         String
+  threeDModels ThreeDModel[] @relation("ModelResolution")
+
+  @@map("resolutions")
+}
+
+model Format {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  threeDModels ThreeDModelFormat[]
+
+  @@map("formats")
+}
+
+model Action {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  name      String
+  icon      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  threeDModels ThreeDModel[] @relation("ModelAction")
+
+  @@map("actions")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  icon      String
+  color     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  threeDModels ThreeDModel[] @relation("ModelCategory")
+
+  @@map("categories")
+}
+
+model Gallery {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  userId      Int      @map("user_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @map("updated_at")
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  galleryModels GalleryModel[] // 👈 Connects to join table
+
+  @@map("galleries")
+}
+
+model GalleryModel {
+  galleryId     Int
+  threeDModelId Int
+  order         Int @default(0)
+
+  gallery     Gallery     @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id], onDelete: Cascade)
+
+  @@id([galleryId, threeDModelId])
+  @@map("gallery_models")
+}
+
+model Download {
+  id            Int      @id @default(autoincrement())
+  threeDModelId Int      @map("threed_model_id")
+  downloadAt    DateTime @map("download_at")
+
+  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id], name: "ModelDownload")
+
+  @@map("downloads")
+}
+
+// Admin, User
+model MainRole {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  name String
+
+  users User[]
+
+  @@map("roles")
+}
+
+// Creator, Developer, Sponsor
+model SubRole {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  name String
+
+  users User[]
+
+  @@map("sub_roles")
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  email           String?   @unique
+  emailVerifiedAt DateTime? @map("email_verified_at")
+  password        String?
+  name            String
+  slug            String    @unique
+  description     String?   @db.Text
+  twitterUrl      String?   @map("twitter_url")
+  websiteUrl      String?   @map("website_url")
+  youtubeUrl      String?   @map("youtube_url")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now())
+  mainRoleId      Int       @map("main_role_id")
+
+  mainRole     MainRole      @relation(fields: [mainRoleId], references: [id])
+  subRoles     SubRole[]
+  threeDModels ThreeDModel[]
+  accounts     Account[]
+  galleries    Gallery[]
+
+  @@map("users")
+}
+
+model Account {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String   @map("provider_account_id")
+  refreshToken      String?  @map("refresh_token") @db.Text
+  accessToken       String?  @map("access_token") @db.Text
+  expiredAt         Int?     @map("expired_at")
+  tokenType         String?  @map("token_type")
+  scope             String?
+  idToken           String?  @map("id_token") @db.Text
+  sessionState      String?  @map("session_state") @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}

@@ -1,0 +1,87 @@
+steps:
+  # Step to build the Docker container image
+  - name: "gcr.io/cloud-builders/docker"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        docker build \
+          -t $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA \
+          --build-arg NEXT_PUBLIC_BASE_URL="$_NEXT_PUBLIC_BASE_URL" \
+          --build-arg NEXT_PUBLIC_BASE_URL="$_NEXT_PUBLIC_BASE_URL" \
+          --build-arg NEXT_PUBLIC_GA_MEASUREMENT_ID="$_NEXT_PUBLIC_GA_MEASUREMENT_ID" \
+          --build-arg NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL="$_NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL" \
+          --build-arg NEXT_PUBLIC_ENV_STATUS="$_NEXT_PUBLIC_ENV_STATUS" \
+          --build-arg NEXT_PUBLIC_USE_GCS_EMULATOR="$_NEXT_PUBLIC_USE_GCS_EMULATOR" \
+          --build-arg NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY="$_NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY" \
+          --build-arg NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE="$_NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE" \
+          --build-arg NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION="$_NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION" \
+          --build-arg DATABASE_URL="$_DATABASE_URL" \
+          --build-arg DIRECT_URL="$_DIRECT_URL" \
+          --build-arg GCS_BUCKET_NAME="$_GCS_BUCKET_NAME" \
+          --build-arg GCS_TYPE="$_GCS_TYPE" \
+          --build-arg GCS_CLIENT_ID="$_GCS_CLIENT_ID" \
+          --build-arg GCS_PROJECT_ID="$_GCS_PROJECT_ID" \
+          --build-arg GCS_CLIENT_EMAIL="$_GCS_CLIENT_EMAIL" \
+          --build-arg GCS_PRIVATE_KEY="$$GCS_PRIVATE_KEY" \
+          .
+    secretEnv: ["GCS_PRIVATE_KEY", DATABASE_URL, DIRECT_URL]
+    id: Build
+
+  # Push the container image to Container Registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      [
+        "push",
+        "$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA",
+      ]
+    id: Push
+
+  # Deploy the container image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "$_SERVICE_NAME"
+      - "--image"
+      - "$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
+      - "--region"
+      - "$_DEPLOY_REGION"
+    id: Deploy
+
+images:
+  - "$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
+options:
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _AR_HOSTNAME: us-west1-docker.pkg.dev
+  _PLATFORM: managed
+  _SERVICE_NAME: meshmell
+  _DEPLOY_REGION: us-west1
+  _TRIGGER_ID: 770e62b3-0799-48df-9413-900b6777f844
+  _NEXT_PUBLIC_BASE_URL: "${_NEXT_PUBLIC_BASE_URL}"
+  _NEXT_PUBLIC_GA_MEASUREMENT_ID: "${_NEXT_PUBLIC_GA_MEASUREMENT_ID}"
+  _NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL: "${_NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}"
+  _NEXT_PUBLIC_ENV_STATUS: "${_NEXT_PUBLIC_ENV_STATUS}"
+  _NEXT_PUBLIC_USE_GCS_EMULATOR: "${_NEXT_PUBLIC_USE_GCS_EMULATOR}"
+  _NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION: "${_NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION}"
+  _GCS_BUCKET_NAME: "${_GCS_BUCKET_NAME}"
+  _GCS_TYPE: "${_GCS_TYPE}"
+  _GCS_CLIENT_ID: "${_GCS_CLIENT_ID}"
+  _GCS_PROJECT_ID: "${_GCS_PROJECT_ID}"
+  _GCS_CLIENT_EMAIL: "${_GCS_CLIENT_EMAIL}"
+  _NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY: "${_NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}"
+  _NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE: "${_NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE}"
+availableSecrets:
+  secretManager:
+    - versionName: projects/705128422297/secrets/DATABASE_URL/versions/latest
+      env: DATABASE_URL
+    - versionName: projects/705128422297/secrets/DIRECT_URL/versions/latest
+      env: DIRECT_URL
+    - versionName: projects/705128422297/secrets/GCS_PRIVATE_KEY/versions/latest
+      env: GCS_PRIVATE_KEY
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - meshmell

@@ -1,0 +1,228 @@
+{
+  "main": {
+    "auth": {
+      "email": "Email",
+      "login": "Log in",
+      "signup": "Sign up",
+      "loginDescription": "Enter your email below to login to your account",
+      "signupDescription": "Create a new account to share your 3D models",
+      "noAccount": "Don't have an account?",
+      "hasAccount": "Already have an account?",
+      "name": "Name",
+      "password": "Password",
+      "submit": "Submit"
+    },
+    "locale": "en_US",
+    "description": "Meshmell is a 3D model sharing service. You can download 3D models for free and use them in your 3D software.",
+    "copied": "Copied to clipboard",
+    "about": {
+      "footer": "What is Meshmell",
+      "title": "Meshmell is a free 3D model distribution site.",
+      "description": "The 3D models can be viewed and downloaded with intuitive operation. The models are licensed under CC0 and can be used freely for commercial and non-commercial purposes. We would appreciate it if you could give credit to the author when you use them.",
+      "articleAboutMeshmell": "Article about Meshmell",
+      "articleAboutMeshmellTechnology": "Article about Meshmell technology"
+    },
+    "actionsSwitch": {
+      "title": "Actions",
+      "stopAction": "Stop Action"
+    },
+    "buyMeACoffee": "I'd appreciate it if you could help me",
+    "categoryFilter": {
+      "searchAll": "Search all",
+      "filterByCategory": "Filter by category",
+      "searchCategories": "Search categories",
+      "clear": "Clear"
+    },
+    "contact": {
+      "footer": "Contact",
+      "contactUs": ". Contact Us",
+      "contact": "Contact us / Request for work",
+      "email": "Please contact us via this e-mail address"
+    },
+    "copyRight": {
+      "footer": "Copy Right",
+      "cc0": "License: CC0",
+      "aboutCopyRight": "About CopyRight",
+      "h1": "Copyright Policy",
+      "lastUpdated": "Last updated: January 1, 2024",
+      "licenseOfEachModel": {
+        "h2": "License of each model",
+        "p-1": "The license for the models provided on this site is CC0, allowing free use for both commercial and non-commercial purposes. We would appreciate it if you could credit the author when using them.",
+        "cc0": "License: CC0",
+        "p-2": "When sharing or using the information provided on this site, it is not mandatory but we would appreciate it if you could display credit to the source."
+      },
+      "licenseOfSoftware": {
+        "h2": "License of software",
+        "p-1": "The software used on this website is open source",
+        "p-2": "This site's git repo is here: "
+      },
+      "changesToThisCopyrightPolicy": {
+        "h2": "Changes to This Copyright Policy",
+        "p-1": "We may update our Copyright Policy from time to time. We will notify you of any changes by posting the new Copyright Policy on this page. You are advised to review this Copyright Policy periodically for any changes."
+      }
+    },
+    "creatorFilter": {
+      "searchAll": "Search all",
+      "filterByCreator": "Filter by creator",
+      "searchCreators": "Search creators",
+      "clear": "Clear"
+    },
+    "creatorInfo": {
+      "seeMoreModels": "See more models by this creator",
+      "sourceCreator": "This model is created by referencing this creator's content.",
+      "source": "Source"
+    },
+    "download": {
+      "thankTo": "Say thanks to the creator",
+      "sorry": "Sorry",
+      "couldNotFind": "This model with this resolution and format could not be found.",
+      "download": "Download",
+      "downloads": "Downloads: ",
+      "uniqueDownloads": "Downloads par a day: ",
+      "contactUs": "Please contact us",
+      "canDownloadFromOriginalSite": "This model can be downloaded from the original source site below."
+    },
+    "forDevelopers": {
+      "footer": "For Developers",
+      "title": "For Developers",
+      "sourceCode": "Meshmell is an open source (GNU Affero General Public License) project. This site's git repo is here: ",
+      "recruit": "We are looking for contributors to develop together. Feel free to send us a pull request."
+    },
+    "forSponsors": {
+      "footer": "For Sponsors",
+      "title": "For Sponsors",
+      "description": "We would be delighted to receive your support! The names of our supporters (or company names, organizations, etc.) will be displayed on the screen that appears when you click the 'Sponsors' button at the bottom right of the screen. Depending on the donation amount, the text can be made clickable and linked to your specified website. The size of the text will also be determined by the amount of your support. Please see the table below for details on donation amounts and text display formats.",
+      "donation": {
+        "link": "Link",
+        "textSize": "Text size",
+        "contrast": "Contrast between text and background",
+        "oneThousand": {
+          "title": "$1000",
+          "textSize": "Big",
+          "contrast": "High",
+          "link": "Available"
+        },
+        "fiveHundred": {
+          "title": "$500",
+          "textSize": "Medium",
+          "contrast": "Medium",
+          "link": "Not available"
+        },
+        "oneHundred": {
+          "title": "$100",
+          "textSize": "Small",
+          "contrast": "Low",
+          "link": "Not available"
+        }
+      }
+    },
+    "languageSwitch": {
+      "switchLanguage": "Switch Language"
+    },
+    "loadingForCanvas": {
+      "name": "Meshmell",
+      "start": "Start to explore",
+      "loading": "Loading...",
+      "loaded": "Loaded!"
+    },
+    "modelSourceUrl": {
+      "source1": "This model is downloaded from ",
+      "source2": ""
+    },
+    "namePlate": {
+      "source": "Source",
+      "noResult": "No Result"
+    },
+    "privacyPolicy": {
+      "footer": "Privacy Policy",
+      "h1": "Privacy Policy",
+      "lastUpdated": "Last updated: January 1, 2024",
+      "informationWeCollect": {
+        "h2": "Information We Collect",
+        "p-1": "We do not collect any personal data from our users. We do not use cookies and do not have a login function.",
+        "p-2": "We collect timestamp information of downloads solely for statistical purposes, without any personal information."
+      },
+      "changesToThisPrivacyPolicy": {
+        "h2": "Changes to This Privacy Policy",
+        "p-1": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes."
+      },
+      "thirdPartyAdvertisements": {
+        "h2": "Third Party Advertisements",
+        "p-1": "We use third-party advertising companies to serve ads when you visit our website. These companies may use information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you."
+      }
+    },
+    "search": {
+      "search": "Search",
+      "reset": "Reset"
+    },
+    "shareThisPage": {
+      "title": "Share this page"
+    },
+    "officialSNSAccounts": "Official SNS accounts",
+    "sponsors": {
+      "title": "Sponsors",
+      "thankTo_1": "Thank you to our sponsors",
+      "thankTo_2": ""
+    },
+    "terms": {
+      "footer": "Terms of Service",
+      "h1": "Terms and Conditions",
+      "lastUpdated": "Last updated: January 1, 2024",
+      "acceptanceOfTerms": {
+        "h2": "Acceptance of Terms",
+        "p-1": "By accessing or using our website, you agree to comply with and be bound by the terms and conditions outlined here. If you do not agree to these terms, please do not use this site."
+      },
+      "changesToTerms": {
+        "h2": "Changes to Terms",
+        "p-1": "We reserve the right to change, modify, or revise these Terms at any time. It is your responsibility to review this page regularly for updates. Continued use of this website signifies your acceptance of any updated terms."
+      },
+      "limitationsOfLiability": {
+        "h2": "Limitations of Liability",
+        "p-1": "We will not be liable for any indirect, incidental, consequential, or punitive damages arising out of your access to or use of this website. This includes, but is not limited to, any errors or omissions in content, any unauthorized access to or use of our servers, any personal information stored therein, any interruption or cessation of transmission to or from the website, and any bugs, viruses, or the like which may be transmitted to or through our website by any third party."
+      },
+      "governingLaw": {
+        "h2": "Governing Law",
+        "p-1": "These terms and conditions are governed by and construed in accordance with the laws of [Country/State] and you irrevocably submit to the exclusive jurisdiction of the courts in that location."
+      }
+    },
+    "viewsSwitch": {
+      "switchView": "Switch view"
+    },
+    "who": {
+      "footer": "Created by",
+      "developers": "Developers",
+      "contributorWanted": "At this point, this site is developed by one person. I am looking for a co-developer. If you are interested in working with me, please contact me."
+    },
+    "home": {
+      "title": "Share your 3D models with an interactive viewer",
+      "description": "Easily share your 3D models through an interactive web-based viewer. Includes features like wireframe toggle, custom actions, and smooth real-time exploration",
+      "meta": {
+        "about": "Meshmell",
+        "description": "Meshmell"
+      }
+    },
+    "share": {
+      "description": "Share your 3D models",
+      "loginRequired": "Login required",
+      "noLoginRequired": "No login required",
+      "myPage": "My Page",
+      "chooseFile": "Choose File",
+      "noFileChosen": "No file chosen",
+      "modelName": "Model Name",
+      "addModel": "Add Model",
+      "logOut": "Log out",
+      "meta": {
+        "about": "Share",
+        "description": "Share"
+      }
+    },
+    "exhibition": {
+      "description": "Download 3D models for free",
+      "noLoginRequired": "No login required",
+      "meta": {
+        "about": "Exhibition",
+        "description": "Exhibition"
+      }
+    }
+  }
+}

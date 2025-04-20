@@ -1,0 +1,23 @@
+# next.js
+.next/
+
+# node modules
+node_modules/
+
+# version control
+.git/
+
+# env files
+.env*
+
+# markdown
+*.md
+
+# log files
+*.log
+
+# gcs emulator
+gcs_dev/
+
+# public directory
+public/

@@ -1,0 +1,20 @@
+# next.js
+.next/
+
+# node modules
+node_modules/
+
+# log files
+*.log
+
+# version control
+.git/
+
+# env files
+.env*
+
+# gcs emulator
+gcs_dev/
+
+# public directory
+public/
